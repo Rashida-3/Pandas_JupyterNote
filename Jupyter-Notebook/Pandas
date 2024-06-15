@@ -1,0 +1,1956 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 44,
+   "id": "7e6f79a8-5614-4401-8032-6ae979e28be9",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>name</th>\n",
+       "      <th>marks</th>\n",
+       "      <th>city</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>zobia</td>\n",
+       "      <td>32</td>\n",
+       "      <td>mumbai</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>rashida</td>\n",
+       "      <td>44</td>\n",
+       "      <td>pune</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>huda</td>\n",
+       "      <td>76</td>\n",
+       "      <td>kolkatta</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>anam</td>\n",
+       "      <td>25</td>\n",
+       "      <td>jhansi</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "      name  marks      city\n",
+       "0    zobia     32    mumbai\n",
+       "1  rashida     44      pune\n",
+       "2     huda     76  kolkatta\n",
+       "3     anam     25    jhansi"
+      ]
+     },
+     "execution_count": 44,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "import pandas as pd\n",
+    "import numpy as np\n",
+    "\n",
+    "dict1={\n",
+    "    \"name\":['zobia','rashida','huda','anam'],\n",
+    "    \"marks\":[32,44,76,25],\n",
+    "    \"city\":['mumbai','pune','kolkatta','jhansi']\n",
+    "\n",
+    "}\n",
+    "res=pd.DataFrame(dict1)\n",
+    "res"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 45,
+   "id": "8ca5bf90-55b0-4ec1-89ba-4dceaa79c9f4",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "res.to_csv('pandas.csv')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 46,
+   "id": "9613b31f-ef6f-4d41-aab2-dadf04216073",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "res.to_csv('pandas_index_false.csv', index=False)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 47,
+   "id": "260b0b13-abdd-4b77-96c1-391167aacf44",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>name</th>\n",
+       "      <th>marks</th>\n",
+       "      <th>city</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>zobia</td>\n",
+       "      <td>32</td>\n",
+       "      <td>mumbai</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>rashida</td>\n",
+       "      <td>44</td>\n",
+       "      <td>pune</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>huda</td>\n",
+       "      <td>76</td>\n",
+       "      <td>kolkatta</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "      name  marks      city\n",
+       "0    zobia     32    mumbai\n",
+       "1  rashida     44      pune\n",
+       "2     huda     76  kolkatta"
+      ]
+     },
+     "execution_count": 47,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "res.head(3)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 48,
+   "id": "a2c8f050-9ac0-4b53-8754-5bb30d74bd12",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>name</th>\n",
+       "      <th>marks</th>\n",
+       "      <th>city</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>huda</td>\n",
+       "      <td>76</td>\n",
+       "      <td>kolkatta</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>anam</td>\n",
+       "      <td>25</td>\n",
+       "      <td>jhansi</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "   name  marks      city\n",
+       "2  huda     76  kolkatta\n",
+       "3  anam     25    jhansi"
+      ]
+     },
+     "execution_count": 48,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "#last two column get \n",
+    "res.tail(2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 49,
+   "id": "c3f6e415-8294-4bca-956e-d865af628111",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>marks</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>count</th>\n",
+       "      <td>4.000000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>mean</th>\n",
+       "      <td>44.250000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>std</th>\n",
+       "      <td>22.573953</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>min</th>\n",
+       "      <td>25.000000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>25%</th>\n",
+       "      <td>30.250000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>50%</th>\n",
+       "      <td>38.000000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>75%</th>\n",
+       "      <td>52.000000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>max</th>\n",
+       "      <td>76.000000</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "           marks\n",
+       "count   4.000000\n",
+       "mean   44.250000\n",
+       "std    22.573953\n",
+       "min    25.000000\n",
+       "25%    30.250000\n",
+       "50%    38.000000\n",
+       "75%    52.000000\n",
+       "max    76.000000"
+      ]
+     },
+     "execution_count": 49,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "res.describe()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "d8ada23b-ebde-438a-a5d4-4709a755be03",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 50,
+   "id": "d51f1f89-e53a-4345-9d06-0b4bc0a069a5",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "new=pd.read_csv('rashida.csv')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 51,
+   "id": "d2adc1fe-187f-430b-b1cd-ec00de0e4077",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>Unnamed: 0.1</th>\n",
+       "      <th>Unnamed: 0</th>\n",
+       "      <th>name</th>\n",
+       "      <th>marks</th>\n",
+       "      <th>city</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>0</td>\n",
+       "      <td>23</td>\n",
+       "      <td>50</td>\n",
+       "      <td>32</td>\n",
+       "      <td>mumbai</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>1</td>\n",
+       "      <td>233</td>\n",
+       "      <td>rashida</td>\n",
+       "      <td>44</td>\n",
+       "      <td>pune</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>2</td>\n",
+       "      <td>45</td>\n",
+       "      <td>huda</td>\n",
+       "      <td>76</td>\n",
+       "      <td>kolkatta</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>3</td>\n",
+       "      <td>12</td>\n",
+       "      <td>anam</td>\n",
+       "      <td>25</td>\n",
+       "      <td>jhansi</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "   Unnamed: 0.1  Unnamed: 0     name  marks      city\n",
+       "0             0          23       50     32    mumbai\n",
+       "1             1         233  rashida     44      pune\n",
+       "2             2          45     huda     76  kolkatta\n",
+       "3             3          12     anam     25    jhansi"
+      ]
+     },
+     "execution_count": 51,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "new"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 52,
+   "id": "7a0dc115-3d71-44c7-9552-87c3d5818a5c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "obj=pd.read_csv('rashida.csv')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 53,
+   "id": "34eaea94-91af-48e4-99c3-5652c99b8e45",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>Unnamed: 0.1</th>\n",
+       "      <th>Unnamed: 0</th>\n",
+       "      <th>name</th>\n",
+       "      <th>marks</th>\n",
+       "      <th>city</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>0</td>\n",
+       "      <td>23</td>\n",
+       "      <td>50</td>\n",
+       "      <td>32</td>\n",
+       "      <td>mumbai</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>1</td>\n",
+       "      <td>233</td>\n",
+       "      <td>rashida</td>\n",
+       "      <td>44</td>\n",
+       "      <td>pune</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>2</td>\n",
+       "      <td>45</td>\n",
+       "      <td>huda</td>\n",
+       "      <td>76</td>\n",
+       "      <td>kolkatta</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>3</td>\n",
+       "      <td>12</td>\n",
+       "      <td>anam</td>\n",
+       "      <td>25</td>\n",
+       "      <td>jhansi</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "   Unnamed: 0.1  Unnamed: 0     name  marks      city\n",
+       "0             0          23       50     32    mumbai\n",
+       "1             1         233  rashida     44      pune\n",
+       "2             2          45     huda     76  kolkatta\n",
+       "3             3          12     anam     25    jhansi"
+      ]
+     },
+     "execution_count": 53,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "obj"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 54,
+   "id": "14f5e929-de21-46db-a7bf-e8f67b7d4e90",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "obj1=pd.read_csv('rashida.csv')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 55,
+   "id": "f792aa55-d145-4b51-af74-03e1adf9bf8a",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>Unnamed: 0.1</th>\n",
+       "      <th>Unnamed: 0</th>\n",
+       "      <th>name</th>\n",
+       "      <th>marks</th>\n",
+       "      <th>city</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>0</td>\n",
+       "      <td>23</td>\n",
+       "      <td>50</td>\n",
+       "      <td>32</td>\n",
+       "      <td>mumbai</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>1</td>\n",
+       "      <td>233</td>\n",
+       "      <td>rashida</td>\n",
+       "      <td>44</td>\n",
+       "      <td>pune</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>2</td>\n",
+       "      <td>45</td>\n",
+       "      <td>huda</td>\n",
+       "      <td>76</td>\n",
+       "      <td>kolkatta</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>3</td>\n",
+       "      <td>12</td>\n",
+       "      <td>anam</td>\n",
+       "      <td>25</td>\n",
+       "      <td>jhansi</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "   Unnamed: 0.1  Unnamed: 0     name  marks      city\n",
+       "0             0          23       50     32    mumbai\n",
+       "1             1         233  rashida     44      pune\n",
+       "2             2          45     huda     76  kolkatta\n",
+       "3             3          12     anam     25    jhansi"
+      ]
+     },
+     "execution_count": 55,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "obj1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 56,
+   "id": "b6f645dd-c151-4a0e-9043-361bc697858f",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "0         50\n",
+       "1    rashida\n",
+       "2       huda\n",
+       "3       anam\n",
+       "Name: name, dtype: object"
+      ]
+     },
+     "execution_count": 56,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "obj1['name']"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 57,
+   "id": "b942e0de-39de-493a-8822-3ceb3ea5464f",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'50'"
+      ]
+     },
+     "execution_count": 57,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "obj1['name'][0]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 58,
+   "id": "89203362-3bd7-4af3-8719-a44e7374cd0b",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\ipykernel_6028\\3587901912.py:1: SettingWithCopyWarning: \n",
+      "A value is trying to be set on a copy of a slice from a DataFrame\n",
+      "\n",
+      "See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy\n",
+      "  obj1['name'][0]=50\n"
+     ]
+    }
+   ],
+   "source": [
+    "obj1['name'][0]=50"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 59,
+   "id": "b187c6ea-44e6-457a-beda-8c3ae83aa4f4",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>Unnamed: 0.1</th>\n",
+       "      <th>Unnamed: 0</th>\n",
+       "      <th>name</th>\n",
+       "      <th>marks</th>\n",
+       "      <th>city</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>0</td>\n",
+       "      <td>23</td>\n",
+       "      <td>50</td>\n",
+       "      <td>32</td>\n",
+       "      <td>mumbai</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>1</td>\n",
+       "      <td>233</td>\n",
+       "      <td>rashida</td>\n",
+       "      <td>44</td>\n",
+       "      <td>pune</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>2</td>\n",
+       "      <td>45</td>\n",
+       "      <td>huda</td>\n",
+       "      <td>76</td>\n",
+       "      <td>kolkatta</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>3</td>\n",
+       "      <td>12</td>\n",
+       "      <td>anam</td>\n",
+       "      <td>25</td>\n",
+       "      <td>jhansi</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "   Unnamed: 0.1  Unnamed: 0     name  marks      city\n",
+       "0             0          23       50     32    mumbai\n",
+       "1             1         233  rashida     44      pune\n",
+       "2             2          45     huda     76  kolkatta\n",
+       "3             3          12     anam     25    jhansi"
+      ]
+     },
+     "execution_count": 59,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "obj1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 61,
+   "id": "9f769f17-0a36-4a61-a0bc-dbd3590cfd7a",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# obj1.to_csv('rashida.csv')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "98845f84-91c5-41a9-a2b3-53698500818c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "obj1.index=['first','second','third','fourth']"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "b1b0067b-eb4e-4be0-8457-404c6966c2c7",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "obj1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 62,
+   "id": "290d9b4b-2286-49b9-a730-901e22cb5437",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "ser=pd.Series(np.random.rand(34))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 63,
+   "id": "5cedd2e6-e459-4cf6-a311-1bd5e665a2ee",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "0     0.312338\n",
+       "1     0.083435\n",
+       "2     0.611953\n",
+       "3     0.258185\n",
+       "4     0.906657\n",
+       "5     0.606358\n",
+       "6     0.649693\n",
+       "7     0.267580\n",
+       "8     0.755919\n",
+       "9     0.823114\n",
+       "10    0.154042\n",
+       "11    0.617898\n",
+       "12    0.505776\n",
+       "13    0.193356\n",
+       "14    0.050988\n",
+       "15    0.870260\n",
+       "16    0.054107\n",
+       "17    0.070698\n",
+       "18    0.650294\n",
+       "19    0.575660\n",
+       "20    0.215193\n",
+       "21    0.999777\n",
+       "22    0.860828\n",
+       "23    0.275923\n",
+       "24    0.441707\n",
+       "25    0.592825\n",
+       "26    0.433686\n",
+       "27    0.057029\n",
+       "28    0.738783\n",
+       "29    0.578498\n",
+       "30    0.913491\n",
+       "31    0.326536\n",
+       "32    0.037102\n",
+       "33    0.441010\n",
+       "dtype: float64"
+      ]
+     },
+     "execution_count": 63,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "ser"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 65,
+   "id": "92f932f4-a4ba-4e5a-80fe-565fbb38c4da",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "pandas.core.series.Series"
+      ]
+     },
+     "execution_count": 65,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "type(ser)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 66,
+   "id": "f592f6e6-c8a8-44a0-a181-c328b15eeff9",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "newdf=pd.DataFrame(np.random.rand(334,5), index=np.arange(334))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 67,
+   "id": "830b76eb-ab45-4453-bb9e-05e189efa797",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>0</th>\n",
+       "      <th>1</th>\n",
+       "      <th>2</th>\n",
+       "      <th>3</th>\n",
+       "      <th>4</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>0.608334</td>\n",
+       "      <td>0.754341</td>\n",
+       "      <td>0.960878</td>\n",
+       "      <td>0.500302</td>\n",
+       "      <td>0.673550</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>0.987404</td>\n",
+       "      <td>0.921444</td>\n",
+       "      <td>0.423889</td>\n",
+       "      <td>0.975468</td>\n",
+       "      <td>0.009330</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>0.503349</td>\n",
+       "      <td>0.162287</td>\n",
+       "      <td>0.387481</td>\n",
+       "      <td>0.129358</td>\n",
+       "      <td>0.363555</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>0.530919</td>\n",
+       "      <td>0.939754</td>\n",
+       "      <td>0.529012</td>\n",
+       "      <td>0.138658</td>\n",
+       "      <td>0.071103</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>0.053228</td>\n",
+       "      <td>0.759661</td>\n",
+       "      <td>0.460514</td>\n",
+       "      <td>0.536602</td>\n",
+       "      <td>0.488184</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>...</th>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>329</th>\n",
+       "      <td>0.020257</td>\n",
+       "      <td>0.080694</td>\n",
+       "      <td>0.507083</td>\n",
+       "      <td>0.754239</td>\n",
+       "      <td>0.319910</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>330</th>\n",
+       "      <td>0.492743</td>\n",
+       "      <td>0.699530</td>\n",
+       "      <td>0.407186</td>\n",
+       "      <td>0.463931</td>\n",
+       "      <td>0.920848</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>331</th>\n",
+       "      <td>0.496342</td>\n",
+       "      <td>0.139518</td>\n",
+       "      <td>0.593912</td>\n",
+       "      <td>0.937543</td>\n",
+       "      <td>0.925232</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>332</th>\n",
+       "      <td>0.548464</td>\n",
+       "      <td>0.570825</td>\n",
+       "      <td>0.766647</td>\n",
+       "      <td>0.426804</td>\n",
+       "      <td>0.912206</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>333</th>\n",
+       "      <td>0.300950</td>\n",
+       "      <td>0.428603</td>\n",
+       "      <td>0.407960</td>\n",
+       "      <td>0.488852</td>\n",
+       "      <td>0.909751</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "<p>334 rows × 5 columns</p>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "            0         1         2         3         4\n",
+       "0    0.608334  0.754341  0.960878  0.500302  0.673550\n",
+       "1    0.987404  0.921444  0.423889  0.975468  0.009330\n",
+       "2    0.503349  0.162287  0.387481  0.129358  0.363555\n",
+       "3    0.530919  0.939754  0.529012  0.138658  0.071103\n",
+       "4    0.053228  0.759661  0.460514  0.536602  0.488184\n",
+       "..        ...       ...       ...       ...       ...\n",
+       "329  0.020257  0.080694  0.507083  0.754239  0.319910\n",
+       "330  0.492743  0.699530  0.407186  0.463931  0.920848\n",
+       "331  0.496342  0.139518  0.593912  0.937543  0.925232\n",
+       "332  0.548464  0.570825  0.766647  0.426804  0.912206\n",
+       "333  0.300950  0.428603  0.407960  0.488852  0.909751\n",
+       "\n",
+       "[334 rows x 5 columns]"
+      ]
+     },
+     "execution_count": 67,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "newdf"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 68,
+   "id": "d7c0d7e2-1bf8-4ee1-9a98-08977b318fba",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "pandas.core.frame.DataFrame"
+      ]
+     },
+     "execution_count": 68,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "type(newdf)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 69,
+   "id": "59005ca0-49fb-4e39-a5c3-afbeed7e26d1",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>0</th>\n",
+       "      <th>1</th>\n",
+       "      <th>2</th>\n",
+       "      <th>3</th>\n",
+       "      <th>4</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>count</th>\n",
+       "      <td>334.000000</td>\n",
+       "      <td>334.000000</td>\n",
+       "      <td>334.000000</td>\n",
+       "      <td>334.000000</td>\n",
+       "      <td>334.000000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>mean</th>\n",
+       "      <td>0.501975</td>\n",
+       "      <td>0.497755</td>\n",
+       "      <td>0.519810</td>\n",
+       "      <td>0.503655</td>\n",
+       "      <td>0.483735</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>std</th>\n",
+       "      <td>0.297372</td>\n",
+       "      <td>0.281088</td>\n",
+       "      <td>0.270174</td>\n",
+       "      <td>0.291471</td>\n",
+       "      <td>0.293078</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>min</th>\n",
+       "      <td>0.001811</td>\n",
+       "      <td>0.002448</td>\n",
+       "      <td>0.001725</td>\n",
+       "      <td>0.000597</td>\n",
+       "      <td>0.001185</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>25%</th>\n",
+       "      <td>0.241205</td>\n",
+       "      <td>0.264244</td>\n",
+       "      <td>0.310482</td>\n",
+       "      <td>0.260645</td>\n",
+       "      <td>0.234611</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>50%</th>\n",
+       "      <td>0.503381</td>\n",
+       "      <td>0.517223</td>\n",
+       "      <td>0.508524</td>\n",
+       "      <td>0.501099</td>\n",
+       "      <td>0.494302</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>75%</th>\n",
+       "      <td>0.748149</td>\n",
+       "      <td>0.746671</td>\n",
+       "      <td>0.754253</td>\n",
+       "      <td>0.753588</td>\n",
+       "      <td>0.716924</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>max</th>\n",
+       "      <td>0.996636</td>\n",
+       "      <td>0.996513</td>\n",
+       "      <td>0.997501</td>\n",
+       "      <td>0.999425</td>\n",
+       "      <td>0.998913</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "                0           1           2           3           4\n",
+       "count  334.000000  334.000000  334.000000  334.000000  334.000000\n",
+       "mean     0.501975    0.497755    0.519810    0.503655    0.483735\n",
+       "std      0.297372    0.281088    0.270174    0.291471    0.293078\n",
+       "min      0.001811    0.002448    0.001725    0.000597    0.001185\n",
+       "25%      0.241205    0.264244    0.310482    0.260645    0.234611\n",
+       "50%      0.503381    0.517223    0.508524    0.501099    0.494302\n",
+       "75%      0.748149    0.746671    0.754253    0.753588    0.716924\n",
+       "max      0.996636    0.996513    0.997501    0.999425    0.998913"
+      ]
+     },
+     "execution_count": 69,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "newdf.describe()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 71,
+   "id": "4a4c5d1a-7c79-44cd-8ccb-1c0b368a0879",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "0    float64\n",
+       "1    float64\n",
+       "2    float64\n",
+       "3    float64\n",
+       "4    float64\n",
+       "dtype: object"
+      ]
+     },
+     "execution_count": 71,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "newdf.dtypes"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 73,
+   "id": "f4f04897-cd41-441a-bce9-f2058a6c0064",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "newdf[0][0]='rashida'"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 74,
+   "id": "9f6dce3e-e02d-45c6-8054-bee3891ce0c3",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>0</th>\n",
+       "      <th>1</th>\n",
+       "      <th>2</th>\n",
+       "      <th>3</th>\n",
+       "      <th>4</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>rashida</td>\n",
+       "      <td>0.754341</td>\n",
+       "      <td>0.960878</td>\n",
+       "      <td>0.500302</td>\n",
+       "      <td>0.673550</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>0.987404</td>\n",
+       "      <td>0.921444</td>\n",
+       "      <td>0.423889</td>\n",
+       "      <td>0.975468</td>\n",
+       "      <td>0.009330</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>0.503349</td>\n",
+       "      <td>0.162287</td>\n",
+       "      <td>0.387481</td>\n",
+       "      <td>0.129358</td>\n",
+       "      <td>0.363555</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>0.530919</td>\n",
+       "      <td>0.939754</td>\n",
+       "      <td>0.529012</td>\n",
+       "      <td>0.138658</td>\n",
+       "      <td>0.071103</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>0.053228</td>\n",
+       "      <td>0.759661</td>\n",
+       "      <td>0.460514</td>\n",
+       "      <td>0.536602</td>\n",
+       "      <td>0.488184</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>...</th>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>329</th>\n",
+       "      <td>0.020257</td>\n",
+       "      <td>0.080694</td>\n",
+       "      <td>0.507083</td>\n",
+       "      <td>0.754239</td>\n",
+       "      <td>0.319910</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>330</th>\n",
+       "      <td>0.492743</td>\n",
+       "      <td>0.699530</td>\n",
+       "      <td>0.407186</td>\n",
+       "      <td>0.463931</td>\n",
+       "      <td>0.920848</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>331</th>\n",
+       "      <td>0.496342</td>\n",
+       "      <td>0.139518</td>\n",
+       "      <td>0.593912</td>\n",
+       "      <td>0.937543</td>\n",
+       "      <td>0.925232</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>332</th>\n",
+       "      <td>0.548464</td>\n",
+       "      <td>0.570825</td>\n",
+       "      <td>0.766647</td>\n",
+       "      <td>0.426804</td>\n",
+       "      <td>0.912206</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>333</th>\n",
+       "      <td>0.30095</td>\n",
+       "      <td>0.428603</td>\n",
+       "      <td>0.407960</td>\n",
+       "      <td>0.488852</td>\n",
+       "      <td>0.909751</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "<p>334 rows × 5 columns</p>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "            0         1         2         3         4\n",
+       "0     rashida  0.754341  0.960878  0.500302  0.673550\n",
+       "1    0.987404  0.921444  0.423889  0.975468  0.009330\n",
+       "2    0.503349  0.162287  0.387481  0.129358  0.363555\n",
+       "3    0.530919  0.939754  0.529012  0.138658  0.071103\n",
+       "4    0.053228  0.759661  0.460514  0.536602  0.488184\n",
+       "..        ...       ...       ...       ...       ...\n",
+       "329  0.020257  0.080694  0.507083  0.754239  0.319910\n",
+       "330  0.492743  0.699530  0.407186  0.463931  0.920848\n",
+       "331  0.496342  0.139518  0.593912  0.937543  0.925232\n",
+       "332  0.548464  0.570825  0.766647  0.426804  0.912206\n",
+       "333   0.30095  0.428603  0.407960  0.488852  0.909751\n",
+       "\n",
+       "[334 rows x 5 columns]"
+      ]
+     },
+     "execution_count": 74,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "newdf"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 75,
+   "id": "4bfb9a62-e014-4dd5-a163-08e700f7d422",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>0</th>\n",
+       "      <th>1</th>\n",
+       "      <th>2</th>\n",
+       "      <th>3</th>\n",
+       "      <th>4</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>rashida</td>\n",
+       "      <td>0.754341</td>\n",
+       "      <td>0.960878</td>\n",
+       "      <td>0.500302</td>\n",
+       "      <td>0.673550</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>0.987404</td>\n",
+       "      <td>0.921444</td>\n",
+       "      <td>0.423889</td>\n",
+       "      <td>0.975468</td>\n",
+       "      <td>0.009330</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>0.503349</td>\n",
+       "      <td>0.162287</td>\n",
+       "      <td>0.387481</td>\n",
+       "      <td>0.129358</td>\n",
+       "      <td>0.363555</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>0.530919</td>\n",
+       "      <td>0.939754</td>\n",
+       "      <td>0.529012</td>\n",
+       "      <td>0.138658</td>\n",
+       "      <td>0.071103</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>0.053228</td>\n",
+       "      <td>0.759661</td>\n",
+       "      <td>0.460514</td>\n",
+       "      <td>0.536602</td>\n",
+       "      <td>0.488184</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "          0         1         2         3         4\n",
+       "0   rashida  0.754341  0.960878  0.500302  0.673550\n",
+       "1  0.987404  0.921444  0.423889  0.975468  0.009330\n",
+       "2  0.503349  0.162287  0.387481  0.129358  0.363555\n",
+       "3  0.530919  0.939754  0.529012  0.138658  0.071103\n",
+       "4  0.053228  0.759661  0.460514  0.536602  0.488184"
+      ]
+     },
+     "execution_count": 75,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "newdf.head()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 76,
+   "id": "6255e05a-66e4-4b4e-8bc1-abea2a5f073d",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "0     object\n",
+       "1    float64\n",
+       "2    float64\n",
+       "3    float64\n",
+       "4    float64\n",
+       "dtype: object"
+      ]
+     },
+     "execution_count": 76,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "newdf.dtypes"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 77,
+   "id": "a12c03a0-3ce4-4a9e-a30d-9ee3cdbc0ef2",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "Index([  0,   1,   2,   3,   4,   5,   6,   7,   8,   9,\n",
+       "       ...\n",
+       "       324, 325, 326, 327, 328, 329, 330, 331, 332, 333],\n",
+       "      dtype='int32', length=334)"
+      ]
+     },
+     "execution_count": 77,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "newdf.index"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 78,
+   "id": "0bdba0fb-aba2-46c4-9c06-59a7217aa874",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "RangeIndex(start=0, stop=5, step=1)"
+      ]
+     },
+     "execution_count": 78,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "newdf.columns"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 79,
+   "id": "7e52909a-1ab0-494d-8d0c-c5e8e5e9db84",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([['rashida', 0.7543414201082207, 0.960878005251273,\n",
+       "        0.5003021470236891, 0.6735499612926719],\n",
+       "       [0.987403782190562, 0.9214444052656454, 0.42388856952042764,\n",
+       "        0.9754678939107607, 0.009329772249059065],\n",
+       "       [0.5033491045143951, 0.16228723240538667, 0.38748059248622124,\n",
+       "        0.12935798620156003, 0.3635552552695642],\n",
+       "       ...,\n",
+       "       [0.49634211321590516, 0.13951829292717588, 0.5939120879787787,\n",
+       "        0.9375432161197642, 0.9252322987928957],\n",
+       "       [0.5484644167237801, 0.5708251612802911, 0.7666468475518646,\n",
+       "        0.42680442974062205, 0.9122057200280611],\n",
+       "       [0.30095036477323145, 0.4286032723874942, 0.40796047084018017,\n",
+       "        0.48885246284487927, 0.909751478100927]], dtype=object)"
+      ]
+     },
+     "execution_count": 79,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "newdf.to_numpy()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 80,
+   "id": "e025e6bd-56ea-4f5b-880b-8b11cc3d158a",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "newdf[0][0]=0.5"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 81,
+   "id": "038d79f6-b5e6-4516-90b1-ae78abc2db7e",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>0</th>\n",
+       "      <th>1</th>\n",
+       "      <th>2</th>\n",
+       "      <th>3</th>\n",
+       "      <th>4</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>0.5</td>\n",
+       "      <td>0.754341</td>\n",
+       "      <td>0.960878</td>\n",
+       "      <td>0.500302</td>\n",
+       "      <td>0.673550</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>0.987404</td>\n",
+       "      <td>0.921444</td>\n",
+       "      <td>0.423889</td>\n",
+       "      <td>0.975468</td>\n",
+       "      <td>0.009330</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>0.503349</td>\n",
+       "      <td>0.162287</td>\n",
+       "      <td>0.387481</td>\n",
+       "      <td>0.129358</td>\n",
+       "      <td>0.363555</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>0.530919</td>\n",
+       "      <td>0.939754</td>\n",
+       "      <td>0.529012</td>\n",
+       "      <td>0.138658</td>\n",
+       "      <td>0.071103</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>0.053228</td>\n",
+       "      <td>0.759661</td>\n",
+       "      <td>0.460514</td>\n",
+       "      <td>0.536602</td>\n",
+       "      <td>0.488184</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "          0         1         2         3         4\n",
+       "0       0.5  0.754341  0.960878  0.500302  0.673550\n",
+       "1  0.987404  0.921444  0.423889  0.975468  0.009330\n",
+       "2  0.503349  0.162287  0.387481  0.129358  0.363555\n",
+       "3  0.530919  0.939754  0.529012  0.138658  0.071103\n",
+       "4  0.053228  0.759661  0.460514  0.536602  0.488184"
+      ]
+     },
+     "execution_count": 81,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "newdf.head()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 82,
+   "id": "1d883048-c3d8-47fe-9fc8-60f7bb658581",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>0</th>\n",
+       "      <th>1</th>\n",
+       "      <th>2</th>\n",
+       "      <th>3</th>\n",
+       "      <th>4</th>\n",
+       "      <th>5</th>\n",
+       "      <th>6</th>\n",
+       "      <th>7</th>\n",
+       "      <th>8</th>\n",
+       "      <th>9</th>\n",
+       "      <th>...</th>\n",
+       "      <th>324</th>\n",
+       "      <th>325</th>\n",
+       "      <th>326</th>\n",
+       "      <th>327</th>\n",
+       "      <th>328</th>\n",
+       "      <th>329</th>\n",
+       "      <th>330</th>\n",
+       "      <th>331</th>\n",
+       "      <th>332</th>\n",
+       "      <th>333</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>0.5</td>\n",
+       "      <td>0.987404</td>\n",
+       "      <td>0.503349</td>\n",
+       "      <td>0.530919</td>\n",
+       "      <td>0.053228</td>\n",
+       "      <td>0.49618</td>\n",
+       "      <td>0.336772</td>\n",
+       "      <td>0.023852</td>\n",
+       "      <td>0.964616</td>\n",
+       "      <td>0.001811</td>\n",
+       "      <td>...</td>\n",
+       "      <td>0.486202</td>\n",
+       "      <td>0.323039</td>\n",
+       "      <td>0.314116</td>\n",
+       "      <td>0.055573</td>\n",
+       "      <td>0.92062</td>\n",
+       "      <td>0.020257</td>\n",
+       "      <td>0.492743</td>\n",
+       "      <td>0.496342</td>\n",
+       "      <td>0.548464</td>\n",
+       "      <td>0.30095</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>0.754341</td>\n",
+       "      <td>0.921444</td>\n",
+       "      <td>0.162287</td>\n",
+       "      <td>0.939754</td>\n",
+       "      <td>0.759661</td>\n",
+       "      <td>0.52855</td>\n",
+       "      <td>0.884006</td>\n",
+       "      <td>0.826511</td>\n",
+       "      <td>0.398549</td>\n",
+       "      <td>0.95721</td>\n",
+       "      <td>...</td>\n",
+       "      <td>0.777395</td>\n",
+       "      <td>0.554054</td>\n",
+       "      <td>0.64582</td>\n",
+       "      <td>0.642225</td>\n",
+       "      <td>0.883131</td>\n",
+       "      <td>0.080694</td>\n",
+       "      <td>0.69953</td>\n",
+       "      <td>0.139518</td>\n",
+       "      <td>0.570825</td>\n",
+       "      <td>0.428603</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>0.960878</td>\n",
+       "      <td>0.423889</td>\n",
+       "      <td>0.387481</td>\n",
+       "      <td>0.529012</td>\n",
+       "      <td>0.460514</td>\n",
+       "      <td>0.84524</td>\n",
+       "      <td>0.94875</td>\n",
+       "      <td>0.237266</td>\n",
+       "      <td>0.431666</td>\n",
+       "      <td>0.878627</td>\n",
+       "      <td>...</td>\n",
+       "      <td>0.914488</td>\n",
+       "      <td>0.590792</td>\n",
+       "      <td>0.98847</td>\n",
+       "      <td>0.177778</td>\n",
+       "      <td>0.36231</td>\n",
+       "      <td>0.507083</td>\n",
+       "      <td>0.407186</td>\n",
+       "      <td>0.593912</td>\n",
+       "      <td>0.766647</td>\n",
+       "      <td>0.40796</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>0.500302</td>\n",
+       "      <td>0.975468</td>\n",
+       "      <td>0.129358</td>\n",
+       "      <td>0.138658</td>\n",
+       "      <td>0.536602</td>\n",
+       "      <td>0.447411</td>\n",
+       "      <td>0.802721</td>\n",
+       "      <td>0.549095</td>\n",
+       "      <td>0.607738</td>\n",
+       "      <td>0.056469</td>\n",
+       "      <td>...</td>\n",
+       "      <td>0.531342</td>\n",
+       "      <td>0.917429</td>\n",
+       "      <td>0.954677</td>\n",
+       "      <td>0.718778</td>\n",
+       "      <td>0.748218</td>\n",
+       "      <td>0.754239</td>\n",
+       "      <td>0.463931</td>\n",
+       "      <td>0.937543</td>\n",
+       "      <td>0.426804</td>\n",
+       "      <td>0.488852</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>0.67355</td>\n",
+       "      <td>0.00933</td>\n",
+       "      <td>0.363555</td>\n",
+       "      <td>0.071103</td>\n",
+       "      <td>0.488184</td>\n",
+       "      <td>0.758048</td>\n",
+       "      <td>0.475307</td>\n",
+       "      <td>0.776912</td>\n",
+       "      <td>0.943353</td>\n",
+       "      <td>0.055194</td>\n",
+       "      <td>...</td>\n",
+       "      <td>0.346534</td>\n",
+       "      <td>0.882195</td>\n",
+       "      <td>0.213238</td>\n",
+       "      <td>0.597418</td>\n",
+       "      <td>0.684734</td>\n",
+       "      <td>0.31991</td>\n",
+       "      <td>0.920848</td>\n",
+       "      <td>0.925232</td>\n",
+       "      <td>0.912206</td>\n",
+       "      <td>0.909751</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "<p>5 rows × 334 columns</p>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "        0         1         2         3         4         5         6    \\\n",
+       "0       0.5  0.987404  0.503349  0.530919  0.053228   0.49618  0.336772   \n",
+       "1  0.754341  0.921444  0.162287  0.939754  0.759661   0.52855  0.884006   \n",
+       "2  0.960878  0.423889  0.387481  0.529012  0.460514   0.84524   0.94875   \n",
+       "3  0.500302  0.975468  0.129358  0.138658  0.536602  0.447411  0.802721   \n",
+       "4   0.67355   0.00933  0.363555  0.071103  0.488184  0.758048  0.475307   \n",
+       "\n",
+       "        7         8         9    ...       324       325       326       327  \\\n",
+       "0  0.023852  0.964616  0.001811  ...  0.486202  0.323039  0.314116  0.055573   \n",
+       "1  0.826511  0.398549   0.95721  ...  0.777395  0.554054   0.64582  0.642225   \n",
+       "2  0.237266  0.431666  0.878627  ...  0.914488  0.590792   0.98847  0.177778   \n",
+       "3  0.549095  0.607738  0.056469  ...  0.531342  0.917429  0.954677  0.718778   \n",
+       "4  0.776912  0.943353  0.055194  ...  0.346534  0.882195  0.213238  0.597418   \n",
+       "\n",
+       "        328       329       330       331       332       333  \n",
+       "0   0.92062  0.020257  0.492743  0.496342  0.548464   0.30095  \n",
+       "1  0.883131  0.080694   0.69953  0.139518  0.570825  0.428603  \n",
+       "2   0.36231  0.507083  0.407186  0.593912  0.766647   0.40796  \n",
+       "3  0.748218  0.754239  0.463931  0.937543  0.426804  0.488852  \n",
+       "4  0.684734   0.31991  0.920848  0.925232  0.912206  0.909751  \n",
+       "\n",
+       "[5 rows x 334 columns]"
+      ]
+     },
+     "execution_count": 82,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "newdf.T"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "cf9d8529-d97c-4c1e-900d-2f3160b14026",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.12.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
